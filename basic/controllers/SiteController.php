@@ -135,4 +135,31 @@ class SiteController extends Controller
     {
         return $this->render('say', ['message' => $message]);
     }
+
+
+
+
+    //Create action for new model EntryForm
+    //https://www.yiiframework.com/doc/guide/2.0/en/start-forms
+    //This action creates new EntryForm object. populates with data from $_POST
+    //if successfully populated, calls validate()
+    public function actionEntry()
+    {
+      $model = new EntryForm();
+
+      //Info: The expression Yii::$app represents the application instance,
+      //which is a globally accessible singleton. It is also a service locator
+      //that provides components such as request, response, db, etc. to support
+      //specific functionality. In the above code, the request component of the
+      //application instance is used to access the $_POST data.
+
+      if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+        //validate model
+        //either entry-confirm page is displayed, or validation error
+        return $this->render('entry-confirm', ['model' => $model]);
+      } else {
+        return $this->render('entry', ['model' => $model]);
+      }
+    }
+
 }
