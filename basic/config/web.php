@@ -43,11 +43,15 @@ $config = [
             ],
         ],
         'db' => $db,
+
+        //WHAT
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+              'countries' => 'countries/index',
+              'country/<id: \d+>' => 'country/view'
             ],
         ],
         */
