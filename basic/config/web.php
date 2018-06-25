@@ -11,6 +11,7 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+    #'MOST IMPORTANT PART'
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -45,16 +46,29 @@ $config = [
         'db' => $db,
 
         //WHAT
-        /*
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'enableStrictParsing' => false,
             'rules' => [
-              'countries' => 'countries/index',
-              'country/<id: \d+>' => 'country/view'
+              'countries' => 'country/index',
+              'country/<id:\w+>' => 'country/view',
+              'defaultRoute' => '/country/index',
             ],
+
         ],
-        */
+        #CONTROLLERMAP NOT INCLUDED IN ORIGINAL SCAFFOLD, BUT IN DOCUMENTATION
+        # https://www.yiiframework.com/doc/guide/2.0/en/structure-applications
+
+        // 'controllerMap' => [
+        // 'account' => 'app\controllers\UserController',
+        // 'article' => [
+        //     'class' => 'app\controllers\PostController',
+        //     'enableCsrfValidation' => false,
+        //     ],
+        // ],
+
     ],
     'params' => $params,
 ];
