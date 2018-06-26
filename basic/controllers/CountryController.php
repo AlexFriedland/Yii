@@ -11,6 +11,7 @@ use yii\filters\VerbFilter;
 
 /**
  * CountryController implements the CRUD actions for Country model.
+ * OTHER LAYOUT - # public $layout = 'layout_name';
  */
 class CountryController extends Controller
 {

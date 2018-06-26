@@ -45,8 +45,6 @@ $config = [
         ],
         'db' => $db,
 
-        //WHAT
-
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -55,6 +53,8 @@ $config = [
               'countries' => 'country/index',
               'country/<id:\w+>' => 'country/view',
               'defaultRoute' => '/country/index',
+              'login' => 'site/login',
+              'contact' => 'site/contactform',
             ],
 
         ],
