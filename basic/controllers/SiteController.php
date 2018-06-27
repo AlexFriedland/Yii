@@ -70,6 +70,11 @@ class SiteController extends Controller
      *
      * @return Response|string
      */
+
+
+
+     //WHERE IS THE SESSION???
+     //https://www.yiiframework.com/doc/guide/2.0/en/runtime-sessions-cookies
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
@@ -110,6 +115,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
 
+            //echo Yii::$app->session->getFlash;
             return $this->refresh();
         }
         return $this->render('contact', [
@@ -147,6 +153,7 @@ class SiteController extends Controller
     //if successfully populated, calls validate()
     public function actionEntry()
     {
+      //create new entry form object
       $model = new EntryForm();
 
       //Info: The expression Yii::$app represents the application instance,
@@ -155,8 +162,9 @@ class SiteController extends Controller
       //specific functionality. In the above code, the request component of the
       //application instance is used to access the $_POST data.
 
+      //populate model w data from $_POST, provided in yii\web\request::post()
+      //if successfully populated AND model can be validated...
       if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-        //validate model
         //either entry-confirm page is displayed, or validation error
         return $this->render('entry-confirm', ['model' => $model]);
       } else {

@@ -13,6 +13,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="country-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
+
+    <h4>Your IP: <?= Yii::$app->request->userIP; ?></h4>
+    <h4>Your Host: <?= Yii::$app->request->userHost; ?></h4>
+
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>

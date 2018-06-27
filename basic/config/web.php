@@ -52,9 +52,11 @@ $config = [
             'rules' => [
               'countries' => 'country/index',
               'country/<id:\w+>' => 'country/view',
-              'defaultRoute' => '/country/index',
               'login' => 'site/login',
-              'contact' => 'site/contactform',
+              // 'contact' => 'site/contactform',
+              'entry' => 'site/entry',
+
+              '/' => 'country/index',
             ],
 
         ],

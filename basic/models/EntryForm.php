@@ -24,7 +24,7 @@
   A data validation failure will set the hasErrors property to true, and you
   may learn what validation errors occurred through errors.
   */
-  
+
   $model = new EntryForm();
   $model->name = 'Qiang';
   $model->email = 'bad';
