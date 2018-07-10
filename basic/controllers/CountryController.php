@@ -36,6 +36,9 @@ class CountryController extends Controller
      */
     public function actionIndex()
     {
+      $session = Yii::$app->session;
+      $language = $session->get('language');
+
         $searchModel = new CountrySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

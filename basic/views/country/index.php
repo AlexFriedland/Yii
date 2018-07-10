@@ -10,10 +10,13 @@ use yii\grid\GridView;
 $this->title = 'Countries';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<?php date_default_timezone_set('UTC'); ?>
 <div class="country-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
+    <?php echo date('h:i:s:u a, l F jS Y e') ?>
     <h4>Your IP: <?= Yii::$app->request->userIP; ?></h4>
     <h4>Your Host: <?= Yii::$app->request->userHost; ?></h4>
 

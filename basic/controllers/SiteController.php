@@ -10,6 +10,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\EntryForm;
+use yii\bootstrap\Alert;
 
 class SiteController extends Controller
 {
@@ -73,7 +74,7 @@ class SiteController extends Controller
 
 
 
-     //WHERE IS THE SESSION???
+     //no session, rememberMe
      //https://www.yiiframework.com/doc/guide/2.0/en/runtime-sessions-cookies
     public function actionLogin()
     {
@@ -113,9 +114,11 @@ class SiteController extends Controller
     {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
+            //Yii::$app->session->setFlash('contactFormSubmitted');
+            Yii::$app->session->addFlash('alerts', 'contactFormSubmitted');
+            Yii::$app->session->addFlash('alerts', 'Ya Jabroni');
 
-            //echo Yii::$app->session->getFlash;
+            echo Yii::$app->session->getFlash('alerts');
             return $this->refresh();
         }
         return $this->render('contact', [
@@ -171,5 +174,4 @@ class SiteController extends Controller
         return $this->render('entry', ['model' => $model]);
       }
     }
-
 }
