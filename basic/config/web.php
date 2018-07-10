@@ -40,6 +40,19 @@ $config = [
                 [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
+                    // normally this would be email error log to admin but
+                    // throws error
+                    // [
+                    //   'class' => 'yii\log\EmailTarget',
+                    //   'levels' => ['error'],
+                    //   'categories' => ['yii\db\*'],
+                    //   'message' => [
+                    //     'from' => ['log@yii2basic.com'],
+                    //     'to' => ['friedlandaj@gmail.com'],
+                    //     'subject' => 'Database errors from Yii2Basic',
+                    //   ]
+                    // ]
+
                 ],
             ],
         ],
