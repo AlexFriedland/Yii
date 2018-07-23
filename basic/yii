@@ -18,5 +18,13 @@ $config = require __DIR__ . '/config/console.php';
 
 $application = new yii\console\Application($config);
 
+
+//  controller
+// Yii::$app->$db->createCommand()->upsert('yii2basic', [
+//   'code' => 'MX',
+//   'name' => 'Mexico',
+//   'population' => '127500000',
+// ], $params)->execute();
+
 $exitCode = $application->run();
 exit($exitCode);
