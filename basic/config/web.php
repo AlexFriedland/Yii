@@ -68,10 +68,11 @@ $config = [
               'login' => 'site/login',
               // 'contact' => 'site/contactform',
               'entry' => 'site/entry',
+              'home' => 'site/home',
+              'index' => 'site/index',
 
               '/' => 'country/index',
             ],
-
         ],
         #CONTROLLERMAP NOT INCLUDED IN ORIGINAL SCAFFOLD, BUT IN DOCUMENTATION
         # https://www.yiiframework.com/doc/guide/2.0/en/structure-applications
