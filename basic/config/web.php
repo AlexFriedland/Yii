@@ -70,6 +70,7 @@ $config = [
               'entry' => 'site/entry',
               'home' => 'site/home',
               'index' => 'site/index',
+              'create' => 'country/create',
 
               '/' => 'country/index',
             ],
