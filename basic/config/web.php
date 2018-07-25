@@ -11,8 +11,19 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+
     #'MOST IMPORTANT PART'
     'components' => [
+
+        #elasticsearch
+        'elasticsearch' => [
+          'class' => 'yii\elasticsearch\Connection',
+          'nodes' => [
+	           ['http_address' => '127.0.0.1:9200'],
+             // configure more hosts if you have a cluster
+           ],
+         ],
+
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'ziWOKlvAXaWEbW0otalzvUQ_X2hbjixH',
@@ -56,6 +67,10 @@ $config = [
                 ],
             ],
         ],
+
+
+
+
         'db' => $db,
 
         'urlManager' => [
@@ -106,5 +121,7 @@ if (YII_ENV_DEV) {
         //'allowedIPs' => ['127.0.0.1', '::1'],
     ];
 }
+
+#return $config;
 
 return $config;
