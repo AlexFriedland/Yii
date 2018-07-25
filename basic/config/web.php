@@ -87,6 +87,9 @@ $config = [
               'index' => 'site/index',
               'create' => 'country/create',
 
+              #doesn't work
+              'elastic' => '../controllers/ElasticController.php',
+
               '/' => 'country/index',
             ],
         ],
