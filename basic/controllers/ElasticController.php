@@ -14,6 +14,7 @@
       $elastic->name = "USA";
       $elastic->code = "US";
       $elastic->population = 322976000;
+      $elastic->save();
 
       if ($elastic->insert()) {
         echo "Added successfully";
@@ -21,7 +22,7 @@
         echo "Error";
       }
     }
-
+    
   }
 
  ?>

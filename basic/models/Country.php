@@ -12,7 +12,7 @@ use yii\db\ActiveRecord;
  * @property string $name
  * @property int $population
  */
-class Country extends \yii\db\ActiveRecord
+class Country extends \yii\db\ActiveRecord extends \yii\elasticsearch\ActiveRecord
 {
     /**
      * {@inheritdoc}
