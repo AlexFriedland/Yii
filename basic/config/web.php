@@ -86,6 +86,7 @@ $config = [
               'home' => 'site/home',
               'index' => 'site/index',
               'create' => 'country/create',
+              'play' => 'country/play',
 
               #doesn't work
               'elastic' => 'country/elastic',

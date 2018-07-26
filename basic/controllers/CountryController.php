@@ -102,6 +102,7 @@ class CountryController extends Controller
         ]);
     }
 
+
     /**
      * Deletes an existing Country model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -131,4 +132,25 @@ class CountryController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    /**
+     * Displays about page.
+     *
+     * @return string
+     */
+    public function actionPlay()
+    {
+      $session = Yii::$app->session;
+      $language = $session->get('language');
+
+        $searchModel = new CountrySearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('play', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+        
+    }
+
 }
