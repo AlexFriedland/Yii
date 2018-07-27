@@ -52,7 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'code',
             'name',
             'population',
-
+            #ActionColumn displays actions from controller..
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

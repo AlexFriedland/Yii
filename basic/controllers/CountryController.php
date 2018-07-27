@@ -75,14 +75,14 @@ class CountryController extends Controller
           ->limit($pagination->limit)
           ->all();
 
-      
+
 
 
 
       $session = Yii::$app->session;
       $language = $session->get('language');
       $searchModel = new CountrySearch();
-
+      
       $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
       return $this->render('index', [
@@ -97,6 +97,7 @@ class CountryController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
+
     public function actionView($id)
     {
         return $this->render('view', [
