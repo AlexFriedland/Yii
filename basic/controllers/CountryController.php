@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\behaviors\TimestampBehavior;
 use yii\data\Pagination;
+use yii\data\Sort;
 
 
 
@@ -41,7 +42,26 @@ class CountryController extends Controller
      */
     public function actionIndex()
     {
-      #pagination
+      #sorting - dont automatically with view widget
+      // $sort = new Sort([
+      //     'attributes' => [
+      //         'code',
+      //         'population' => [
+      //             'asc' => ['population' => SORT_ASC, 'population' => SORT_ASC],
+      //             'desc' => ['population' => SORT_DESC, 'population' => SORT_DESC],
+      //             'default' => SORT_DESC,
+      //             'label' => 'Name',
+      //         ],
+      //     ],
+      // ]);
+      // $articles = Country::find()
+      //   ->where(['population' => 1])
+      //   ->orderBy($sort->orders)
+      //   ->all();
+
+
+
+      #pagination - doesn't show
       $query = Country::find()->where(['population' => 1]);
 
       // get the total number of articles (but do not fetch the article data yet)
@@ -55,16 +75,20 @@ class CountryController extends Controller
           ->limit($pagination->limit)
           ->all();
 
+      
+
+
+
       $session = Yii::$app->session;
       $language = $session->get('language');
+      $searchModel = new CountrySearch();
 
-        $searchModel = new CountrySearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+      $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+      return $this->render('index', [
+          'searchModel' => $searchModel,
+          'dataProvider' => $dataProvider,
+      ]);
     }
 
     /**

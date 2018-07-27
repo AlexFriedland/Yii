@@ -48,7 +48,7 @@ class CountrySearch extends Country
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-
+        
         $this->load($params);
 
         if (!$this->validate()) {
