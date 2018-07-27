@@ -9,6 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\behaviors\TimestampBehavior;
+use yii\data\Pagination;
+
 
 
 
@@ -39,6 +41,20 @@ class CountryController extends Controller
      */
     public function actionIndex()
     {
+      #pagination
+      $query = Country::find()->where(['population' => 1]);
+
+      // get the total number of articles (but do not fetch the article data yet)
+      $count = $query->count();
+
+      // create a pagination object with the total count
+      $pagination = new Pagination(['totalCount' => $count]);
+
+      // limit the query using the pagination and retrieve the articles
+      $countries = $query->offset($pagination->offset)
+          ->limit($pagination->limit)
+          ->all();
+
       $session = Yii::$app->session;
       $language = $session->get('language');
 
@@ -150,7 +166,7 @@ class CountryController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
-        
+
     }
 
 }

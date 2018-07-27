@@ -4,7 +4,13 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\jui\DatePicker;
 use yii\widgets\ActiveForm;
+use yii\widgets\LinkPager;
 use yii\data\Pagination;
+use app\models\Country;
+use app\models\CountrySearch;
+use yii\data\Sort;
+
+
 
 
 
@@ -50,4 +56,27 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+
+
+    <?php
+
+    #pagination
+    $query = Country::find()->where(['population' => 1]);
+
+    // get the total number of articles (but do not fetch the article data yet)
+    $count = $query->count();
+
+    // create a pagination object with the total count
+    $pagination = new Pagination(['totalCount' => $count]);
+    $pagination->route = 'country/index';
+
+    // limit the query using the pagination and retrieve the articles
+    $countries = $query->offset($pagination->offset)
+        ->limit($pagination->limit)
+        ->all();
+     ?>
+
+     <div># pagination doesn't appear
+       <a href="<?= $pagination->createUrl(0); ?>"></a>
+     </div>
 </div>
