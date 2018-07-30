@@ -25,6 +25,13 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
             'authKey' => 'test101key',
             'accessToken' => '101-token',
         ],
+        '102' => [
+            'id' => '102',
+            'username' => 'alex',
+            'password' => 'alex',
+            'authkey' => 'test101key',
+            'accessToken' => '102-token',
+        ]
     ];
 
 
@@ -77,11 +84,26 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
 
     /**
      * {@inheritdoc}
+     *
+     * it returns a key used to verify cookie-based login. The key is stored in
+     * the login cookie and will be later compared with the server-side version
+     * to make sure the login cookie is valid.
      */
     public function getAuthKey()
     {
         return $this->authKey;
     }
+
+    
+
+    # HABIBI - makes the added user able to login without 'read-only' error
+    public function setAuthKey($key)
+    {
+      $this->authKey = $key;
+      return $this->authKey;
+    }
+
+
 
     /**
      * {@inheritdoc}
