@@ -10,6 +10,9 @@ use app\models\Country;
 use app\models\CountrySearch;
 use yii\data\Sort;
 
+#$this->registerCss("body { background: #f00; }");
+
+
 
 
 
@@ -43,6 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Country', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
+/* for multiple grid views on one page see output-data-widgets */
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
