@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h4>Your IP: <?= Yii::$app->request->userIP; ?></h4>
     <h4>Your Host: <?= Yii::$app->request->userHost; ?></h4>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?= Html::a('Create Country', ['create'], ['class' => 'btn btn-success']) ?>

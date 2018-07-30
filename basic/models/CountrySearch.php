@@ -44,13 +44,16 @@ class CountrySearch extends Country
         $query = Country::find();
 
         // add conditions that should always apply here
+        // custom search under https://www.yiiframework.com/doc/guide/2.0/en/output-data-widgets
+
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-        
+
         $this->load($params);
 
+        //load the search form and validate
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
@@ -62,6 +65,7 @@ class CountrySearch extends Country
             'population' => $this->population,
         ]);
 
+        //adjust query by adding filters
         $query->andFilterWhere(['like', 'code', $this->code])
             ->andFilterWhere(['like', 'name', $this->name]);
 

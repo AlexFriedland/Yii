@@ -42,7 +42,7 @@ class CountryController extends Controller
      */
     public function actionIndex()
     {
-      #sorting - dont automatically with view widget
+      #sorting - done automatically with view widget
       // $sort = new Sort([
       //     'attributes' => [
       //         'code',
@@ -81,9 +81,12 @@ class CountryController extends Controller
 
       $session = Yii::$app->session;
       $language = $session->get('language');
+
+
       $searchModel = new CountrySearch();
-      
       $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+      
 
       return $this->render('index', [
           'searchModel' => $searchModel,
