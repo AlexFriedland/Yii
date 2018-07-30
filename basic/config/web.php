@@ -84,7 +84,7 @@ $config = [
               // 'contact' => 'site/contactform',
               'entry' => 'site/entry',
               'home' => 'site/home',
-              'index' => 'site/index',
+              'index' => 'country/index',
               'create' => 'country/create',
               'play' => 'country/play',
 

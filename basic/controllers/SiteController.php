@@ -22,8 +22,13 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['login', 'logout', 'signup'],
                 'rules' => [
+                    [
+                      'allow' => true,
+                      'actions' => ['login', 'signup'],
+                      'roles' => ['?'],
+                    ],
                     [
                         'actions' => ['logout'],
                         'allow' => true,
@@ -141,7 +146,7 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-    
+
 
 
     // START OF CUSTOM CODE FROM https://www.yiiframework.com/doc/guide/2.0/en/start-hello

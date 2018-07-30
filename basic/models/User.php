@@ -2,6 +2,13 @@
 
 namespace app\models;
 
+#need these two for using activerecord in findIdentity
+use yii\db\ActiveRecord;
+use yii\web\IdentityInterface;
+
+#to use in findIdentity: return static::findOne($id);
+#need to: class User extends ActiveRecord implements IdentityInterface
+
 class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
 {
     public $id;
@@ -31,16 +38,47 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
             'password' => 'alex',
             'authkey' => 'test101key',
             'accessToken' => '102-token',
+        ],
+        '103' => [
+          'id' => '103',
+          'username' => 'test',
+          'password' => 'test',
+          'authkey' => 'test103key',
+          'accessToken' => '103-token',
         ]
     ];
 
 
+    /* only need to implement getAuthKey() and validateAuthKey() if your appl
+       uses cookie-based login feature. use following code to generate auth key
+       and store in user table.
+
+       EVEN SO YOU STILL NEED SETAUTHKEY method i wrote below
+    */
+
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            if ($this->isNewRecord) {
+                $this->auth_key = \Yii::$app->security->generateRandomString();
+            }
+            return true;
+        }
+        return false;
+    }
+
+
     /**
      * {@inheritdoc}
+     * @param string|int $id the ID to be looked for
+     * @return IdentityInterface|null the identity object that matches the given ID
      */
     public static function findIdentity($id)
     {
         return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+
+        #doesn't work
+        #return static::findOne($id);
     }
 
     /**
@@ -94,7 +132,7 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
         return $this->authKey;
     }
 
-    
+
 
     # HABIBI - makes the added user able to login without 'read-only' error
     public function setAuthKey($key)
