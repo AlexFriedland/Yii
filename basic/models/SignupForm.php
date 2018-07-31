@@ -26,7 +26,7 @@ public function signup()
     $user->setPassword($this->password);
     $user->generateAuthKey();
     $user->save(false); //avoids validating twice
-
+    
     $auth = \Yii::$app->authManager;
     $authorRole = $auth->getRole('author');
     $auth->assign($authorRole, $user->getId());

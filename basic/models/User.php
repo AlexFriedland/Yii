@@ -6,6 +6,13 @@ namespace app\models;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
+#rule logic example - Access Check
+/*
+if (\Yii::$app->user->can('createPost')) {
+    // create post
+}
+*/
+
 #to use in findIdentity: return static::findOne($id);
 #need to: class User extends ActiveRecord implements IdentityInterface
 
