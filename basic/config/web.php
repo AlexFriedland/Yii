@@ -14,6 +14,23 @@ $config = [
 
     #'MOST IMPORTANT PART'
     'components' => [
+        # RBAC (role based access control) manager - via PHP, as below, stores
+        # data w PHP script file
+
+        # access with Yii::$app->authManager
+        'authManager' => [
+          'class' => 'yii\rbac\PhpManager',
+          # can also be yii\rbac\DbManager
+          /*
+          Note: If you are using yii2-basic-app template, there is a config/console.php
+          configuration file where the authManager needs to be declared additionally
+          to config/web.php. In case of yii2-advanced-app the authManager should be
+          declared only once in common/config/main.php.
+
+          Run these with separate migrations:
+          https://www.yiiframework.com/doc/guide/2.0/en/db-migrations#separated-migrations
+          */
+        ]
 
         #elasticsearch
         'elasticsearch' => [
